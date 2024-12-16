@@ -1,7 +1,7 @@
 {
   "name": "pokeapi",
   "private": true,
-  "homepage": "https://elan-sk.github.io/prueba1",
+  "homepage": "https://elan-sk.github.io/pokeApi",
   "version": "0.0.0",
   "type": "module",
   "scripts": {
