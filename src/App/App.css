@@ -1,0 +1,11 @@
+body{
+  > * {border: 3px solid greenyellow;
+    > * {border: 3px solid blue;
+    > * {border: 3px solid deepskyblue;
+    > * {border: 3px solid fuchsia;
+    > * {border: 3px solid gainsboro;
+    > * {border: 3px solid red;
+    > * {border: 3px solid yellow;
+    > * {border: 3px solid aquamarine;
+    }}}}}}}}
+}
