@@ -23,7 +23,7 @@ export default function Home() {
         <LoadingList />
         ) : (
           <>
-            <ul className='row'>
+            <ul className='row align-content-start'>
               {pokemons}
             </ul>
           </>

@@ -26,7 +26,7 @@ export default function Favorites() {
         <LoadingList />
       ) : (
         <>
-          <ul className='row'>
+          <ul className='row align-content-start'>
             {favoritesPokemons}
             {favorites.length === 0 && <EmptyFavorite />}
           </ul>
