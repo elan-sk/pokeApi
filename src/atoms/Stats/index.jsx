@@ -1,4 +1,4 @@
-import { AppContext } from '../../../AppContext';
+import { AppContext } from '../../AppContext';
 import { useContext } from 'react'
 export default function Stats({ stats }) {
   const { highestStats } = useContext(AppContext);

@@ -1,9 +1,8 @@
-import React from 'react'
 import { useGetData } from '../../hooks/useGetData'
-import CardPokemon from '../../components/CardPokemon';
-import Description from '../atoms/Description'
-import Size from '../atoms/Size'
-import Stats from '../atoms/Stats'
+import CardPokemon from '../CardPokemon';
+import Description from '../../atoms/Description'
+import Size from '../../atoms/Size'
+import Stats from '../../atoms/Stats'
 
 export default function CardDetails ({ card }) {
   if (!card) return
@@ -17,8 +16,6 @@ export default function CardDetails ({ card }) {
   const flavorTextsInSpanish = flavor_text_entries
   ?.filter(entry => entry.language.name === "es")
   .map(entry => entry.flavor_text)[0];
-
-
 
   const classComponent = 'CardPokemon'
   const classes = [

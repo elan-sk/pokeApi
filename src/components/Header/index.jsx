@@ -1,6 +1,7 @@
 import { NavLink, useLocation } from "react-router-dom";
 import { AppContext } from '../../AppContext';
 import { useContext } from "react";
+import ButtonBack from '../../atoms/ButtonBack'
 
 export default function Header() {
   const { handleGoBack } = useContext(AppContext);
@@ -8,14 +9,17 @@ export default function Header() {
   const isFavoritePage = location.pathname.startsWith("/favorito");
   const isHomePage = location.pathname.startsWith("/pokemon");
 
+  const classComponent = 'navigation'
+  const classes = [
+    classComponent,
+    'container'
+  ].join(' ')
+
   return (
     <header>
-      <nav className="navigation">
+      <nav className={classes}>
         <ul>
-          <button onClick={handleGoBack}>
-            Volver
-          </button>
-
+          <ButtonBack />
           <li>
             <NavLink
               to="/"
@@ -26,7 +30,6 @@ export default function Header() {
               Home
             </NavLink>
           </li>
-
           <li>
             <NavLink
               to="/favoritos"
@@ -42,3 +45,4 @@ export default function Header() {
     </header>
   );
 }
+

@@ -3,7 +3,7 @@ import { AppContext } from '../../AppContext';
 import CardPokemon from '../../components/CardPokemon';
 import EmptyFavorite from '../../components/EmptyFavorite';
 
-export default function () {
+export default function Favorites() {
   const { getPokemon, favorites } = useContext(AppContext)
 
   const favoritesPokemons = favorites.map( idFavorite => {
