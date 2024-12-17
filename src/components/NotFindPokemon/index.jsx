@@ -13,3 +13,4 @@ export default function NotFindPokemon( {text}) {
     </h3>
   )
 }
+
