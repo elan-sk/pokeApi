@@ -1,0 +1,55 @@
+/* From Uiverse.io by doniaskima */
+.LoadingList {
+  display: grid;
+  height: 100%;
+  place-items: center;
+  width: 100%;
+}
+
+.LoadingList__loader {
+  aspect-ratio: 1;
+  height: 60px;
+  max-height: 60px;
+  position: relative;
+}
+
+.LoadingList__loader::before,
+.LoadingList__loader::after {
+  border-radius: 50%;
+  content: "";
+  inset: 0;
+  position: absolute;
+  transform-origin: bottom;
+}
+
+.LoadingList__loader::after {
+  animation: l20 1s infinite cubic-bezier(0.5, 120, 0.5, -120);
+  background: radial-gradient(at 75% 15%, #fffb, #0000 35%),
+    radial-gradient(at 80% 40%, #0000, #0008),
+    radial-gradient(circle 5px, #fff 94%, #0000),
+    radial-gradient(circle 10px, #000 94%, #0000),
+    linear-gradient(#f93318 0 0) top / 100% calc(50% - 5px),
+    linear-gradient(#fff 0 0) bottom/100% calc(50% - 5px) #000;
+  background-repeat: no-repeat;
+}
+
+.LoadingList__loader::before {
+  background: #ddd;
+  filter: blur(8px);
+  transform: scaleY(0.4) translate(-13px, 0px);
+}
+
+@keyframes l20 {
+  30%,
+  70% {
+    transform: rotate(0deg);
+  }
+
+  49.99% {
+    transform: rotate(0.2deg);
+  }
+
+  50% {
+    transform: rotate(-0.2deg);
+  }
+}

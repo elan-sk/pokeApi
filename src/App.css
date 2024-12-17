@@ -1,11 +1,56 @@
-body{
-  > * {border: 3px solid greenyellow;
-    > * {border: 3px solid blue;
-    > * {border: 3px solid deepskyblue;
-    > * {border: 3px solid fuchsia;
-    > * {border: 3px solid gainsboro;
-    > * {border: 3px solid red;
-    > * {border: 3px solid yellow;
-    > * {border: 3px solid aquamarine;
-    }}}}}}}}
+:root {
+  --height-header: 76px;
+  --color-background: #fdfdfe;
+  --color-border: #e4e6eb;
+  --color-text-primary: #343a40;
+  --color-text-secondary: #5e6472;
+  --color-success-rgb: 34, 139, 34;
+  --color-primary: #a8d8ea;
+  --color-primary-light: #d4f1f9;
+  --color-secondary: #4A4E69;
+  --color-error: #832150;
+
+  * {
+    text-decoration: none;
+  }
+
+  a {
+    color: var(--color-text-primary);
+    transition: all 0.3s ease;
+  }
+}
+
+
+* {
+  color: var(--color-text-primary);
+}
+
+body {
+  background-color: var(--color-background);
+  color: var(--color-text-primary);
+}
+
+button {
+  background-color: transparent;
+  border: none;
+  color: var(--color-surface);
+  transition: all 0.3s ease;
+}
+
+li {
+  list-style-type: none;
+}
+
+.AllPokemon {
+  min-height: calc(100vh - var(--height-header)) !important;
+  h1 {
+    flex: 0 0 auto;
+  }
+  ul{
+    min-height: calc(100vh - var(--height-header));
+  }
+}
+
+.text-decoration {
+  text-decoration: underline;
 }

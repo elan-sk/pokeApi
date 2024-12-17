@@ -1,0 +1,27 @@
+.ButtonFavorite {
+  display: flex;
+  position: absolute;
+  right: 6px;
+  top: 10px;
+  z-index: 99;
+
+  svg {
+    height: 32px;
+    width: 32px;
+  }
+
+  span {
+    display: none;
+    font-size: 14px;
+    font-weight: 800;
+    position: absolute;
+    right: 0;
+    top: -37px;
+    transition: all 0.2s ease;
+    white-space: nowrap;
+  }
+}
+
+.ButtonFavorite:hover span {
+  display: flex;
+}

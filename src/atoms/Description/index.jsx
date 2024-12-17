@@ -1,7 +1,14 @@
+import './index.css'
+
 export default function Description({text}) {
+  const classComponent = 'Description'
+  const classes = [
+    classComponent,
+  ].join(' ')
+
   return (
-    <div>
-      <h3>Descripción</h3>
+    <div className={classes}>
+      <h4>Descripción</h4>
       <p>{text}</p>
     </div>
   )

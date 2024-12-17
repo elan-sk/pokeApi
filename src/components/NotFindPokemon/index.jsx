@@ -1,13 +1,15 @@
-export default function WaitingPokemon( {text}) {
+import './index.css'
 
-  const classComponent = 'WaitingPokemon'
+export default function NotFindPokemon( {text}) {
+  const classComponent = 'NotFindPokemon'
   const classes = [
     classComponent,
+    'AllPokemon d-flex justify-content-center align-items-center'
   ].join(' ')
 
   return (
-    <div className={classes}>
+    <h3 className={classes}>
       {text}
-    </div>
+    </h3>
   )
 }

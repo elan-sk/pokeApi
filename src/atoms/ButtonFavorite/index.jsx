@@ -1,15 +1,21 @@
+import './index.css'
 import StarEmptySvg from './StarEmptySvg'
 import StarFullSvg from './StarFullSvg'
 
-export default function Button({isFavorite, onClick }) {
+export default function ButtonFavorite({isFavorite, onClick }) {
+  const classComponent = 'ButtonFavorite'
+  const classes = [
+    classComponent,
+    ''
+  ].join(' ')
   return (
-    <button onClick={onClick}>
+    <button onClick={onClick} className={classes}>
       {
         isFavorite ?
           <StarFullSvg /> :
           <StarEmptySvg />
       }
-      <span> 
+      <span>
         {
           isFavorite ?
             'Eliminar de Favoritos' :

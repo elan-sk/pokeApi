@@ -1,3 +1,5 @@
+import './index.css'
+
 import { AppContext } from '../../AppContext';
 import { useContext } from 'react'
 export default function Stats({ stats }) {
@@ -13,12 +15,12 @@ export default function Stats({ stats }) {
   };
 
   const statsFormat = stats.map((stat, index) => (
-    <li key={index} className="row">
-      <h4 className="col-1">{shortStats[stat.stat.name]}</h4>
-      <div className="col-10">
+    <li key={index} className="d-flex w-100">
+      <h5>{shortStats[stat.stat.name]}</h5>
+      <div>
         <span style={{ width: `${stat.base_stat / highestStats[stat.stat.name] * 100}%` }}></span>
       </div>
-      <span className="col-1">{stat.base_stat}</span>
+      <small>{stat.base_stat}</small>
     </li>
   ));
   const totalStats = stats.reduce((total, stat) => total + stat.base_stat, 0);
@@ -26,15 +28,17 @@ export default function Stats({ stats }) {
   const classComponent = 'Stats';
   const classes = [
     classComponent,
-    ''
   ].join(' ');
 
   return (
     <div className={classes}>
-      <h3>Estadísticas</h3>
+      <h4>Estadísticas</h4>
       <ul>
         {statsFormat}
-        <li className="col-1"><strong>{totalStats}</strong></li>
+        <li className={`${classComponent}__total`}>
+          <h5>Total</h5>
+          <strong>{totalStats}</strong>
+        </li>
       </ul>
     </div>
   );

@@ -24,7 +24,7 @@ export default function App() {
               <Route path='*' element={<NotFound />} />
             </Routes>
             <Logo
-              src='./logo-elan-sk.svg'
+              src='/logo-elan-sk.svg'
               link='https://elan-sk.github.io/'
             />
           </div>

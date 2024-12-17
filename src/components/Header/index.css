@@ -1,0 +1,42 @@
+.Header {
+  background-color: var(--color-secondary);
+  box-shadow: 0 3px 3px rgba(0, 0, 0, 0.1);
+  padding: 1em 0;
+  position: sticky;
+  top: 0;
+  z-index: 9999;
+
+  ul {
+    display: flex;
+    gap: 2em;
+    margin: 0;
+    padding: 0;
+  }
+
+  li {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+
+    a {
+      color: var(--color-border);
+      font-size: 1.6em;
+      font-weight: bold;
+      position: relative;
+    }
+
+    a:hover {
+      color: var(--color-background);
+    }
+
+    a.active-link:after {
+      background-color: var(--color-primary);
+      bottom: 0;
+      content: "";
+      display: block;
+      height: 3px;
+      position: absolute;
+      width: 100%;
+    }
+  }
+}

@@ -1,43 +1,41 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState } from 'react';
 
 export const useGetData = (urlApi, secondFetch) => {
-  const [data, setData] = useState([]); // Datos finales
-  const [loading, setLoading] = useState(true); // Estado de carga
-  const [error, setError] = useState(false); // Estado de error
+  const [data, setData] = useState([])
+  const [loading, setLoading] = useState(true)
+  const [error, setError] = useState(false)
 
   const getData = async () => {
     try {
-      setLoading(true); // Inicia el estado de carga
-      const res = await fetch(urlApi); // Primer fetch
+      setLoading(true)
+      const res = await fetch(urlApi)
       if (!res.ok) throw new Error(`Error al obtener datos principales: ${res.status}`);
-      const firstData = await res.json(); // Parseo de datos
+      const firstData = await res.json()
 
-      // Verificar si se debe encadenar un segundo fetch
       if (secondFetch && firstData.results) {
         const promises = firstData.results.map(async (result) => {
           const res = await fetch(result[secondFetch]);
-          if (!res.ok) throw new Error(`Error al obtener detalle: ${res.status}`);
-          const detail = await res.json();
-          return detail;
+          if (!res.ok) throw new Error(`Error al obtener detalle: ${res.status}`)
+          const detail = await res.json()
+          return detail
         });
-        const secondResults = await Promise.all(promises);
-        setData(secondResults); // Establecer datos del segundo fetch
+        const secondResults = await Promise.all(promises)
+        setData(secondResults)
       } else {
-        setData(firstData.results || firstData); // Usar `results` o los datos originales
+        setData(firstData.results || firstData)
       }
-
-      setError(false); // No hay error
+      setError(false)
     } catch (error) {
-      console.error("Error al obtener los datos:", error);
-      setError(true); // Manejar el error
+      console.error('Error al obtener los datos:', error)
+      setError(true)
     } finally {
-      setLoading(false); // Finaliza el estado de carga
+      setLoading(false)
     }
-  };
+  }
 
   useEffect(() => {
-    getData(); // Ejecutar la función cuando cambie `urlApi`
-  }, [urlApi, secondFetch]);
+    getData()
+  }, [urlApi, secondFetch])
 
-  return { data, loading, error }; // Retornar estados
-};
+  return { data, loading, error }
+}

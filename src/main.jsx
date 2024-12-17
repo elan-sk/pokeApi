@@ -1,4 +1,4 @@
-// import './main.css'
+import './main.css'
 import { AppProvider } from './AppContext'
 import { BrowserRouter } from 'react-router-dom'
 import { createRoot } from 'react-dom/client'
