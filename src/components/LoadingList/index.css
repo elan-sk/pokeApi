@@ -1,8 +1,10 @@
 /* From Uiverse.io by doniaskima */
 .LoadingList {
   display: grid;
-  height: 100%;
+  height: calc(100vh - (var(--height-header)));
   place-items: center;
+  position: sticky;
+  top: var(--height-header);
   width: 100%;
 }
 

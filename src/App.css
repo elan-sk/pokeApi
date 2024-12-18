@@ -30,6 +30,15 @@ body {
   color: var(--color-text-primary);
 }
 
+body::-webkit-scrollbar {
+  width: 0;
+}
+
+body::-webkit-scrollbar-thumb {
+  background-color: transparent;
+}
+
+
 button {
   background-color: transparent;
   border: none;

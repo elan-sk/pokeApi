@@ -109,12 +109,12 @@
     padding: 0 5px;
   }
 
-  .CardDetails__text-content::-webkit-scrollbar {
-    width: 0;
-  }
-
   .Type {
     margin-bottom: 30px;
+  }
+
+  .CardDetails__text-content::-webkit-scrollbar {
+    width: 0;
   }
 
   .CardDetails__text-content::-webkit-scrollbar-thumb {
