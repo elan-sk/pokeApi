@@ -5,14 +5,10 @@ import { Link } from 'react-router-dom'
 
 export default function CardEvolution({ id }) {
   const { getPokemon } = useContext(AppContext)
-  // console.log(id)
   const pokemon = getPokemon(id)
   const { name, sprites: { front_default } } = pokemon
-
-  // console.log(pokemon)
   const capitalize = text => text[0].toUpperCase() + text.slice(1)
   const page = '/pokemon'
-
 
   const classComponent = 'CardEvolution'
   const classes = [

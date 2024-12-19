@@ -48,21 +48,21 @@
     box-shadow: 7px 7px 20px var(--color-text-secondary), -7px -7px 20px #ffffff;
 
     img {
-      filter: drop-shadow(3px 3px 3px rgba(0, 0, 0, .7));
+      filter: drop-shadow(3px 3px 3px rgba(0, 0, 0, .8));
     }
   }
 
   .CardPokemon__wrapper img {
     height: 100px;
     image-rendering: pixelated;
-    transition: 0.2s ease all;
+    transition: 0.1s ease all;
     width: 100px;
   }
 
   .CardPokemon__wrapper:hover img {
     image-rendering: pixelated;
     position: relative;
-    transform: scale(1.2);
+    transform: scale(1.3);
   }
 }
 .CardPokemon__number {

@@ -43,7 +43,7 @@ export default function Evolutions({ id }) {
 
   return (
     <div className={classes}>
-      <h4>Evolutions</h4>
+      <h4>Evoluciones</h4>
       <div className="d-flex justify-content-center gap-3">
         {evolutions}
       </div>
