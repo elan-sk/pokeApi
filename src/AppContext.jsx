@@ -11,13 +11,13 @@ export const AppProvider = ({ children }) => {
   const parameterLimit = 'pokemon?limit=20'
   const handleGoBack = useGoBack(useNavigate());
   const {
-    data:allPokemons,
-    loading:loadingPokemons, error:errorPokemons
-  } = useGetData( URLAPI + parameterLimit, 'url')
+    data: allPokemons,
+    loading: loadingPokemons, error: errorPokemons
+  } = useGetData(URLAPI + parameterLimit, 'url')
 
   const {
     item: favorites, saveItem: saveFavorites,
-    loading:loadingFavorites, error:errorFavorites
+    loading: loadingFavorites, error: errorFavorites
   } = useLocalStorage('FavoritesPokemons', []);
 
   const getPokemon = (id) => {
@@ -28,15 +28,6 @@ export const AppProvider = ({ children }) => {
       console.error(`Error al buscar el Pokémon con ID ${id}:`, error);
       return false;
     }
-  }
-
-  const highestStats = {
-    hp: 0,
-    attack: 0,
-    defense: 0,
-    'special-attack': 0,
-    'special-defense': 0,
-    speed: 0,
   }
 
 
@@ -59,8 +50,16 @@ export const AppProvider = ({ children }) => {
     dark: "#705746",
     steel: "#B7B7CE",
     fairy: "#D685AD"
-  };
+  }
 
+  const highestStats = {
+    hp: 0,
+    attack: 0,
+    defense: 0,
+    'special-attack': 0,
+    'special-defense': 0,
+    speed: 0,
+  }
 
   allPokemons.forEach(pokemon => {
     pokemon.stats.forEach(stat => {
@@ -70,17 +69,41 @@ export const AppProvider = ({ children }) => {
     })
   })
 
+  async function getEvolutionsLine(allPokemons) {
+    const evolutionsLine = await Promise.all(
+      allPokemons.map(async (pokemon) => {
+        const { id, species } = pokemon;
+        if (species?.url) {
+          try {
+            const response = await fetch(species.url);
+            if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+            const data = await response.json();
+            return { id, evolutionChainUrl: data?.evolution_chain?.url || null };
+          } catch (error) {
+            console.error("Error fetching the data:", error);
+            return { id, evolutionChainUrl: null };
+          }
+        } else {
+          return { id, evolutionChainUrl: null }; // En caso de que no haya URL
+        }
+      })
+    );
+    return evolutionsLine;
+  }
+
+
   const toggleFavorite = (id) => {
     favorites.includes(id) ?
-      saveFavorites(favorites.filter( favorite => favorite !== id)) :
+      saveFavorites(favorites.filter(favorite => favorite !== id)) :
       saveFavorites([...favorites, id])
   }
 
+
   return (
     <AppContext.Provider value={{
-      allPokemons, getPokemon,loadingPokemons, errorPokemons,
+      allPokemons, getPokemon, loadingPokemons, errorPokemons,
       favorites, toggleFavorite, loadingFavorites, errorFavorites,
-      highestStats, typeColors,
+      getEvolutionsLine, highestStats, typeColors,
       handleGoBack
     }}>
       {children}

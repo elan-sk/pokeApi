@@ -4,6 +4,7 @@ import CardPokemon from '../CardPokemon';
 import Description from '../../atoms/Description'
 import Size from '../../atoms/Size'
 import Stats from '../../atoms/Stats'
+import Evolutions from '../../atoms/Evolutions'
 import LoadingList from '../LoadingList'
 import Type from '../../atoms/Type'
 import { Slide } from "react-awesome-reveal";
@@ -48,6 +49,7 @@ export default function CardDetails({ card }) {
               <Description text={flavorTextsInSpanish} />
               <Size height={height} weight={weight} />
               <Stats stats={stats} />
+              <Evolutions id={id}/>
             </div>
           </div>
         </Slide>
