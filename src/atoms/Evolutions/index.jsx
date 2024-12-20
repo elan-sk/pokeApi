@@ -1,29 +1,29 @@
-import './index.css';
-import { useContext, useEffect, useState } from 'react';
-import { AppContext } from '../../AppContext';
+import './index.css'
+import { useContext, useEffect, useState } from 'react'
+import { AppContext } from '../../AppContext'
 import CardEvolution from '../CardEvolution'
 
 export default function Evolutions({ id }) {
-  const { getEvolutionsLine, allPokemons } = useContext(AppContext);
-  const [evolutionUrls, setEvolutionUrls] = useState(null);
-  const [idsEvolutionLine, setIdsEvolutionLine] = useState([]);
+  const { getEvolutionsLine, allPokemons } = useContext(AppContext)
+  const [evolutionUrls, setEvolutionUrls] = useState(null)
+  const [idsEvolutionLine, setIdsEvolutionLine] = useState([])
 
   useEffect(() => {
     const fetchEvolutions = async () => {
       try {
-        const evolutions = await getEvolutionsLine(allPokemons);
-        setEvolutionUrls(Array.from(evolutions)); // Guardar las evoluciones en el estado
+        const evolutions = await getEvolutionsLine(allPokemons)
+        setEvolutionUrls(Array.from(evolutions))
       } catch (error) {
-        console.error("Hubo un error al obtener las evoluciones:", error);
+        console.error("Hubo un error al obtener las evoluciones:", error)
       }
-    };
+    }
 
-    fetchEvolutions();
-  }, [getEvolutionsLine, allPokemons]);
+    fetchEvolutions()
+  }, [getEvolutionsLine, allPokemons])
 
 
   useEffect(() => {
-    const myEvolutionUrl = evolutionUrls?.find(evolution => evolution.id === id );
+    const myEvolutionUrl = evolutionUrls?.find(evolution => evolution.id === id )
     if (myEvolutionUrl) {
       setIdsEvolutionLine ( evolutionUrls?.filter(evolution =>
         evolution.evolutionChainUrl === myEvolutionUrl.evolutionChainUrl
@@ -35,11 +35,11 @@ export default function Evolutions({ id }) {
     <CardEvolution key={id} id={id}/>
   ))
 
-  const classComponent = 'Evolutions';
+  const classComponent = 'Evolutions'
   const classes = [
     classComponent,
     'mb-3'
-  ].join(' ');
+  ].join(' ')
 
   return (
     <div className={classes}>
@@ -48,5 +48,5 @@ export default function Evolutions({ id }) {
         {evolutions}
       </div>
     </div>
-  );
+  )
 }

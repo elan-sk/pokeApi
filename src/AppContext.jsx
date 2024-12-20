@@ -2,14 +2,14 @@ import { createContext } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useGetData } from './hooks/useGetData'
 import { useGoBack } from './hooks/useGoBack'
-import { useLocalStorage } from './hooks/useLocalStorage';
+import { useLocalStorage } from './hooks/useLocalStorage'
 
 export const AppContext = createContext()
 
 export const AppProvider = ({ children }) => {
   const URLAPI = 'https://pokeapi.co/api/v2/'
   const parameterLimit = 'pokemon?limit=20'
-  const handleGoBack = useGoBack(useNavigate());
+  const handleGoBack = useGoBack(useNavigate())
   const {
     data: allPokemons,
     loading: loadingPokemons, error: errorPokemons
@@ -18,15 +18,15 @@ export const AppProvider = ({ children }) => {
   const {
     item: favorites, saveItem: saveFavorites,
     loading: loadingFavorites, error: errorFavorites
-  } = useLocalStorage('FavoritesPokemons', []);
+  } = useLocalStorage('FavoritesPokemons', [])
 
   const getPokemon = (id) => {
     try {
-      const pokemon = allPokemons.find((pokemon) => pokemon.id === id);
-      return pokemon || false;
+      const pokemon = allPokemons.find((pokemon) => pokemon.id === id)
+      return pokemon || false
     } catch (error) {
-      console.error(`Error al buscar el Pokémon con ID ${id}:`, error);
-      return false;
+      console.error(`Error al buscar el Pokémon con ID ${id}:`, error)
+      return false
     }
   }
 
@@ -72,23 +72,23 @@ export const AppProvider = ({ children }) => {
   async function getEvolutionsLine(allPokemons) {
     const evolutionsLine = await Promise.all(
       allPokemons.map(async (pokemon) => {
-        const { id, species } = pokemon;
+        const { id, species } = pokemon
         if (species?.url) {
           try {
-            const response = await fetch(species.url);
-            if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
-            const data = await response.json();
-            return { id, evolutionChainUrl: data?.evolution_chain?.url || null };
+            const response = await fetch(species.url)
+            if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`)
+            const data = await response.json()
+            return { id, evolutionChainUrl: data?.evolution_chain?.url || null }
           } catch (error) {
-            console.error("Error fetching the data:", error);
-            return { id, evolutionChainUrl: null };
+            console.error("Error fetching the data:", error)
+            return { id, evolutionChainUrl: null }
           }
         } else {
-          return { id, evolutionChainUrl: null }; // En caso de que no haya URL
+          return { id, evolutionChainUrl: null } // En caso de que no haya URL
         }
       })
-    );
-    return evolutionsLine;
+    )
+    return evolutionsLine
   }
 
 

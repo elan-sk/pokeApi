@@ -1,11 +1,11 @@
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom'
 import './App.css'
-import Header from './components/Header';
-import Details from './page/Details';
-import Favorites from './page/Favorites';
-import Home from './page/Home';
-import NotFound from './page/NotFound';
-import Logo from './atoms/Logo';
+import Header from './components/Header'
+import Details from './page/Details'
+import Favorites from './page/Favorites'
+import Home from './page/Home'
+import NotFound from './page/NotFound'
+import Logo from './atoms/Logo'
 
 
 
